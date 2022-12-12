@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Github OAuth Test</title>
+    <link rel="stylesheet" href="https://tech-dev1-assets.charmsolutions.ai/charm-widget.css">
+</head>
+
+<body style="margin:0; padding:0">
+    <div
+        style="width: 100%; height: 44px;background-color: rgb(40, 139, 139); display: flex; justify-content: space-between; padding-top: 8px; padding-bottom: 8px;">
+        <p id="userName" style="color: white; font-weight:700"></p>
+        <button id="btn"
+            style="color: white;background-color: rgb(255, 72, 72); border: none; cursor: pointer;margin-right:20px; height: 33px;">
+            <a href="https://github.com/login/oauth/authorize?client_id=Iv1.b97ffece39c7cb3b">
+                Login with GH
+            </a>
+        </button>
+    </div>
+    <h1>Test site</h1>
+    </h1>
+    <div id="charmWidgets">
+
+    </div>
+
+    <script src="https://tech-dev1-assets.charmsolutions.ai/charm-widgets.js"></script>
+    <script>
+        const isRedirect = window.performance.navigation.type === 0;
+        const widgetsDiv = document.getElementById('charmWidgets');
+        const usernameText = document.getElementById('userName');
+
+        function getTemplate(success) {
+            return success ? `
+            <h3>Charm score</h3>
+            <charm-score facet="overview"></charm-score>
+            <charm-score facet="contribution"></charm-score>
+            <hr>
+            <charm-monitoring facet="for-entity" monitoringid="48e39f48-4825-4e0e-bcb6-cfba693b9671" generationid="2e9df69a-e23e-4a01-bdce-d1540bc5f328" entityid="57410069">
+            </charm-monitoring>
+            `
+                : `<h3>Authorization failed</h3>`
+        }
+
+        function getCode() {
+            let code = window.location.search;
+            code = code.replace("?code=", '');
+            console.log('Got the code', code);
+            return code;
+        }
+
+        async function getGithubAccessToken(code, clientId) {
+            const urlFromAWSPanel = 'https://rx7wx4sgbwld7aasbqhwtbxeoe0tycqo.lambda-url.eu-central-1.on.aws/';
+            const url = `${urlFromAWSPanel}?code=${code}&clientId=${clientId}`;
+            return await fetch(url);
+
+        }
+
+        const code = getCode();
+        if (isRedirect && code) {
+            const clientId = 'Iv1.b97ffece39c7cb3b';
+            getGithubAccessToken(code, clientId)
+                .then(res => {
+                    console.log(res.status)
+                    if (res.status === 403) {
+                        widgetsDiv.innerHTML = getTemplate(false);
+                        throw new Error("User anauthorized");
+                    } else {
+                        return res.json();
+                    }
+                })
+                .then(data => {
+                    console.log(data);
+                    usernameText.innerText = `User: ${data.user.login}`;
+                    widgetsDiv.innerHTML = getTemplate(true);
+                })
+        }
+
+
+
+    </script>
+</body>
+
+</html>
