@@ -52,7 +52,7 @@
         }
 
         async function getGithubAccessToken(code, clientId) {
-            const urlFromAWSPanel = 'https://rx7wx4sgbwld7aasbqhwtbxeoe0tycqo.lambda-url.eu-central-1.on.aws/';
+            const urlFromAWSPanel = 'https://vqtafgxzhdvvkrfutpf6qefbaq0lojdc.lambda-url.eu-central-1.on.aws/';
             const url = `${urlFromAWSPanel}?code=${code}&clientId=${clientId}`;
             return await fetch(url);
 
