@@ -46,7 +46,6 @@
         function getCode() {
             let code = window.location.search;
             code = code.replace("?code=", '');
-            console.log('Got the code', code);
             return code;
         }
 
@@ -63,7 +62,7 @@
             getGithubAccessToken(code, clientId)
                 .then(res => {
                     console.log(res.status)
-                    if (res.status === 403) {
+                    if (res.status === 401) {
                         widgetsDiv.innerHTML = getTemplate(false);
                         throw new Error("User anauthorized");
                     } else {
