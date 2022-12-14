@@ -63,11 +63,11 @@
                     console.log(res.status)
                     if (res.status === 401) {
                         widgetsDiv.innerHTML = getTemplate(false);
+                        throw new Error("Unauthorized user");
                     } else {
                         return res.json()
                     }
                 })
-                
                 .then(data => {
                     usernameText.innerText = `User: ${data.user.login}`;
                     widgetsDiv.innerHTML = getTemplate(true);
