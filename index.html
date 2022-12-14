@@ -33,11 +33,10 @@
 
     </div>
     <section id="main" class="px-5">
-        <div class="mt-5" id="greeting">
+        <div class="mt-5 mb-3" id="greeting">
             <h1>Welcome to the CHARM&trade; Widgets test site!</h1>
             <p style="font-size: 1.2rem; color: grey;">Please login to continue...</p>
         </div>
-        </h1>
         <div id="charmWidgets">
         </div>
     </section>
@@ -91,7 +90,7 @@
                 })
                 .then(data => {
                     injectScriptInHead(data.src);
-                    greeting.innerHTML = '<h1>Widgets</h1>'
+                    greeting.innerHTML = '<h1>Widgets</h1> <hr>'
                     widgetsDiv.innerHTML = data.html;
                     loginSection.removeChild(loginSection.querySelector('#loginLink'))
                     usernameText.innerText = `User: ${data.user.login}`;
