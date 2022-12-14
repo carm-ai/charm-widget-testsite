@@ -22,25 +22,11 @@
     <h1>Test site</h1>
     </h1>
     <div id="charmWidgets">
-
     </div>
-    <script src="https://tech-dev1-assets.charmsolutions.ai/charm-widgets.js"></script>
     <script>
         const isRedirect = window.performance.navigation.type === 0;
         const widgetsDiv = document.getElementById('charmWidgets');
         const usernameText = document.getElementById('userName');
-
-        // function getTemplate(success) {
-        //     return success ? `
-        //     <h3>Charm score</h3>
-        //     <charm-score facet="overview"></charm-score>
-        //     <charm-score facet="contribution"></charm-score>
-        //     <hr>
-        //     <charm-monitoring facet="for-entity" monitoringid="48e39f48-4825-4e0e-bcb6-cfba693b9671" generationid="2e9df69a-e23e-4a01-bdce-d1540bc5f328" entityid="57410069">
-        //     </charm-monitoring>
-        //     `
-        //         : `<h3>Authorization failed</h3>`
-        // }
 
         function getFailAuthTemplate() {
             return `<h3>Authorization failed</h3>`
