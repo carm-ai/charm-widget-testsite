@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Github OAuth Test</title>
-    <link rel="stylesheet" href="https://tech-demo-assets.charmsolutions.ai/charm-widget.css">
+    <link rel="stylesheet" href="https://tech-dev1-assets.charmsolutions.ai/charm-widget.css">
 </head>
 
 <body style="margin:0; padding:0">
@@ -18,14 +18,13 @@
                 Login with GH
             </a>
         </button>
-        
     </div>
     <h1>Test site</h1>
     </h1>
     <div id="charmWidgets">
 
     </div>
-    <script src="https://tech-demo-assets.charmsolutions.ai/charm-widgets.js"></script>
+    <script src="https://tech-dev1-assets.charmsolutions.ai/charm-widgets.js"></script>
     <script>
         const isRedirect = window.performance.navigation.type === 0;
         const widgetsDiv = document.getElementById('charmWidgets');
@@ -62,13 +61,16 @@
             getGithubAccessToken(code, clientId)
                 .then(res => {
                     console.log(res.status)
-                    return res.json()
+                    if (res.status === 401) {
+                        widgetsDiv.innerHTML = getTemplate(false);
+                    } else {
+                        return res.json()
+                    }
                 })
                 
                 .then(data => {
-                    console.log(data);
-                    // usernameText.innerText = `User: ${data.user.login}`;
-                    // widgetsDiv.innerHTML = getTemplate(true);
+                    usernameText.innerText = `User: ${data.user.login}`;
+                    widgetsDiv.innerHTML = getTemplate(true);
                 })
         }
     </script>
