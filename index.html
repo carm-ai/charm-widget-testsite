@@ -60,15 +60,11 @@
         if (isRedirect && code) {
             const clientId = 'Iv1.b97ffece39c7cb3b';
             getGithubAccessToken(code, clientId)
-                // .then(res => {
-                //     console.log(res.status)
-                //     if (res.status === 401) {
-                //         widgetsDiv.innerHTML = getTemplate(false);
-                //         throw new Error("User anauthorized");
-                //     } else {
-                //         return res.json();
-                //     }
-                // })
+                .then(res => {
+                    console.log(res.status)
+                    return res.json()
+                })
+                
                 .then(data => {
                     console.log(data);
                     // usernameText.innerText = `User: ${data.user.login}`;
