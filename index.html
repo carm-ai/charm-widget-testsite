@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Github OAuth Test</title>
+    <link rel="stylesheet" href="https://tech-dev1-assets.charmsolutions.ai/charm-widget.css">
+</head>
+
+<body style="margin:0; padding:0">
+    <div
+        style="width: 100%; height: 44px;background-color: rgb(40, 139, 139); display: flex; justify-content: space-between; padding-top: 8px; padding-bottom: 8px;">
+        <p id="userName" style="color: white; font-weight:700"></p>
+        <button id="btn"
+            style="color: white;background-color: rgb(255, 72, 72); border: none; cursor: pointer;margin-right:20px; height: 33px;">
+            <a href="https://github.com/login/oauth/authorize?client_id=Iv1.cb929e85078ae7bb">
+                Login with GH
+            </a>
+        </button>
+    </div>
+    <h1>Test site</h1>
+    </h1>
+    <div id="charmWidgets">
+    </div>
+    <script src="" id="charmWidgetsScript"></script>
+    <script>
+        const isRedirect = window.performance.navigation.type === 0;
+        const widgetsDiv = document.getElementById('charmWidgets');
+        const widgetsScriptTag = document.getElementById('charmWidgetsScript');
+        const usernameText = document.getElementById('userName');
+
+        function getFailAuthTemplate() {
+            return `<h3>Authorization failed</h3>`
+        }
+        function getCode() {
+            let code = window.location.search;
+            code = code.replace("?code=", '');
+            return code;
+        }
+
+        async function getGithubAccessToken(code, clientId, fileName) {
+            const urlFromAWSPanel = 'https://vqtafgxzhdvvkrfutpf6qefbaq0lojdc.lambda-url.eu-central-1.on.aws/';
+            const url = `${urlFromAWSPanel}?code=${code}&clientId=${clientId}&fileName=${fileName}`;
+            return await fetch(url);
+        }
+
+        const code = getCode();
+        if (isRedirect && code) {
+            const clientId = 'Iv1.cb929e85078ae7bb';
+            const fileName = window.location.pathname.split('/')[2];
+            getGithubAccessToken(code, clientId, fileName)
+                .then(res => {
+                    console.log(res.status)
+                    if (res.status === 401) {
+                        widgetsDiv.innerHTML = getFailAuthTemplate();
+                        throw new Error("Unauthorized user");
+                    } else {
+                        return res.json()
+                    }
+                })
+                .then(data => {
+                    widgetsScriptTag.src = data.src;
+                    usernameText.innerText = `User: ${data.user.login}`;
+                    widgetsDiv.innerHTML = data.html;
+                })
+        }
+    </script>
+</body>
+
+</html>
