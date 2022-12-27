@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Testing the News Web Component</title>
+  <base href="/">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://abrigo-staging-assets.charmsolutions.ai/charm-widget.css">
+</head>
+
+<body>
+  <div class="container">
+    <div id="alert" style="visibility: hidden; position: fixed; top: 25px; right: 25px; z-index: 5;" class="alert alert-primary alert-dismissible fade show" role="alert"></div>
+    <div style="width: 1000px">
+      <br>
+      <br>
+
+      <!-- <h5>charm-score</h5>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col">
+          <charm-score score-id="4e353362-743a-40f0-bc82-dbe8f7d8ef2c" facet='overview' tooltips="true"></charm-score>
+        </div>
+        <div class="col">
+          <charm-score score-id="4e353362-743a-40f0-bc82-dbe8f7d8ef2c" facet='quality'></charm-score>
+        </div>
+      </div>
+      <br>
+      <br>
+      <div style="width: 900px">
+        <charm-score score-id="4e353362-743a-40f0-bc82-dbe8f7d8ef2c" facet='contribution' contribution-rendering="bar"></charm-score>
+      </div>
+      <br>
+      <br> -->
+
+      <div class="card"  style="width: 850px;background-color:#eeeeff">
+        <div class="card-body">
+          <h5 class="card-title">Business Loan Score</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Powered by CHARM Solutions&trade;</h6>
+          <hr>
+          <div class="row" style="width: 835px;background-color:white">
+            <div class="col">
+              <charm-score init="c93f2b29-3e83-42a0-a688-eed256771eaa" score-id="7dfddaea-09b7-4d2e-bd6b-ffb5d566db27" facet='overview' tooltips="true"></charm-score>
+            </div>
+            <div class="col">
+              <charm-score init="c93f2b29-3e83-42a0-a688-eed256771eaa" score-id="7dfddaea-09b7-4d2e-bd6b-ffb5d566db27" facet='quality'></charm-score>
+            </div>
+          </div>
+          <br>
+          <charm-score init="c93f2b29-3e83-42a0-a688-eed256771eaa" score-id="7dfddaea-09b7-4d2e-bd6b-ffb5d566db27" facet='contribution' contribution-rendering="bar"></charm-score>
+        </div>
+      </div>
+      
+      <br>
+	  
+	        <div class="card"  style="width: 850px;background-color:#eeeeff">
+        <div class="card-body">
+          <h5 class="card-title">Business Loan Score</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Powered by CHARM Solutions&trade;</h6>
+          <hr>
+          <div class="row" style="width: 835px;background-color:white">
+            <div class="col">
+              <charm-score init="c93f2b29-3e83-42a0-a688-eed256771eaa" score-id="fa657991-2009-481b-ad78-465005a96090" facet='overview' tooltips="true"></charm-score>
+            </div>
+            <div class="col">
+              <charm-score init="c93f2b29-3e83-42a0-a688-eed256771eaa" score-id="fa657991-2009-481b-ad78-465005a96090" facet='quality'></charm-score>
+            </div>
+          </div>
+          <br>
+          <charm-score init="c93f2b29-3e83-42a0-a688-eed256771eaa" score-id="fa657991-2009-481b-ad78-465005a96090" facet='contribution' contribution-rendering="waterfall"></charm-score>
+        </div>
+      </div>
+      
+	  
+	  
+      <!--
+      <div class="card" style="width: 835px;">
+        <div class="card-body">
+          <h5 class="card-title">Business Loan Score</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Powered by CHARM&trade;</h6>
+          <hr>
+          <div class="row">
+            <div class="col">
+              <charm-score init="id_tenant_1" score-id="a193b378-ddb6-4b36-9149-c3023cb1bd8f" facet='overview' tooltips="true"></charm-score>
+            </div>
+            <div class="col">
+              <charm-score init="id_tenant_1" score-id="a193b378-ddb6-4b36-9149-c3023cb1bd8f" facet='quality'></charm-score>
+            </div>
+          </div>
+          <br>
+          <charm-score init="id_tenant_1" score-id="a193b378-ddb6-4b36-9149-c3023cb1bd8f" facet='contribution' contribution-rendering="waterfall"></charm-score>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="card" style="width: 835px;">
+        <div class="card-body">
+          <h5 class="card-title">Business Loan Score</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Powered by CHARM&trade;</h6>
+          <hr>
+          <div class="row">
+            <div class="col">
+              <charm-score score-id="a9bb9b18-29c3-4d05-b64e-64fd7b9e3050" facet='overview' tooltips="true"></charm-score>
+            </div>
+            <div class="col">
+              <charm-score score-id="a9bb9b18-29c3-4d05-b64e-64fd7b9e3050" facet='quality'></charm-score>
+            </div>
+          </div>
+          <br>
+          <charm-score score-id="a9bb9b18-29c3-4d05-b64e-64fd7b9e3050" facet='contribution'></charm-score>
+        </div>
+      </div>
+      
+    </div>
+    -->
+    <br>
+    <br>
+
+    <!-- <div class="jumbotron" style="width: 600px">
+      <h5>charm-monitoring, facet="for-entity"</h5>
+      <hr>
+      <charm-monitoring facet="for-entity" monitoringId="e4ecd662-8b1f-4ee4-84f1-d766bbe7298c"
+        generationId="c651f16b-777e-4975-97fc-025c06b9ac98" entityId="57383783"></charm-monitoring>
+      <hr>
+    </div>
+
+
+     -->
+
+     <!-- <div class="jumbotron" style="width: 600px">
+      <h5>charm-scores, facet="list"</h5>
+      <hr>
+      <charm-scores facet="list"></charm-scores>
+      <hr> -->
+
+    </div>
+  </div>
+
+
+
+  <script type="text/javascript" src="https://abrigo-staging-assets.charmsolutions.ai/charm-widgets.js"></script>
+  
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body>
+
+</html>
