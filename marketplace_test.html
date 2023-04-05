@@ -2,62 +2,24 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Marketplace test</title>
-  <base href="/">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://tech-dev1-assets.charmsolutions.ai/charm-widget.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace embed test </title>
+    <link rel="stylesheet" href="https://tech-dev2-assets.charmsolutions.ai/my-smb-score.css">
 </head>
-
-<body >
-  <div class="container">
-  <br>
-  
-   <h2>Marketplace widget embed test</h2>
-  <div class="row">
-
-   
-
-  <div class="col-6">
-   
-	<div class="alert alert-secondary" role="alert">
-			This Widget example shows a quick POC implementation of a full Javascript <b>Marketplace Partner Widget</b> built on the CHARM Platform widget framework developed for Abrigo. All rendering is done in Angular, with the code being deployed as one standalone javascript file loaded into the end-users browser. The implementation is not complete, easily skinnable, tested or optimized, but it shows the concept of using the CHARM Widget framework to develop a free-standing javascript widget that can be embedded into Marketplace partner sites. 
-			<br>
-			<br>
-			
-			Data is fetched directly from the CHARM Platform integration API using the new API:s available for Entity-Lender-Bid workflows. The three offers are in the example just statically entered into the CHARM Platform database, for a real implementation bids need to be fetched from a Marketplace matching engine.
-			
-			<br>
-			<br>
-			Embedding for the partner will be very simple, using the custom <code>my-smb-score</code> HTML tag. The partner simply need to embed this tag and reference an entity to show a Score and Offfers for.  for example;<br><br>
-			<code> &ltmy-smb-score init="test_tenant_1" entity-id="90246279"&gt </my-smb-score></code>
-						
-		</div>
-	<br>
-	
-
-
-  </div>
-  <div class="col-6" style="background-color='red'">
-
-
-    <my-smb-score init="test_tenant_1" entity-id="90246279"></my-smb-score>
-
-  </div>
-
-  </div>
+<div class="row">
+    <div class="container m-5 h-75 w-50">
+        <my-smb-score entity-id="01GX0NGFTS3304W55Y5A8V3RPC"></my-smb-score>
+    </div>
 </div>
 
+<body>
+    <script src="https://tech-dev2-assets.charmsolutions.ai/my-smb-score.js"></script>
+    <script>
+        my_smb_score.init("dfbdc4d5-64bb-4c71-be68-e79491136a21")
 
-
-  <script type="text/javascript" src="https://tech-dev1-assets.charmsolutions.ai/charm-widgets.js"></script>
-  
-
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    </script>
 </body>
 
 </html>
