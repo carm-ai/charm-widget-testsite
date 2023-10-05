@@ -1,0 +1,371 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    
+    <link rel="icon" type="image/x-icon" href="https://assets.website-files.com/639dfb133eccf9f5cb327618/64ee3263e8968a1c4639bd6f_mySMB%20favicon.png">
+
+    <style>
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .back-to-dashboard {
+        text-decoration: none;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%;
+        letter-spacing: -0.308px;
+        color: #2e5ef6;
+      }
+
+      #content {
+        margin-top: 100px !important;
+        flex: 1;
+      }
+
+      .logout-btn {
+        border-radius: 8px !important;
+        border: 1px solid #c6c6c6 !important;
+        background: white !important;
+      }
+      
+      .reset-password-btn {
+        border-radius: 8px !important;
+        background: #dee2ff !important;
+        color: #2e5ef6 !important;
+      }
+      
+      .dashboard-nav {
+        margin: 0 100px;
+        padding-right: 3rem !important;
+        padding-left: 3rem !important;
+      }
+      
+      .pointer-cursor {
+        cursor: pointer;
+      }
+      
+      .hide-content {
+        display: none;
+      }
+      
+      .manage-profile-button {
+        padding-bottom: 16px;
+        border-bottom: 1px solid #e3e4e4;
+        margin-bottom: 16px;
+      }
+      
+      .manage-profile-button a {
+        color: #252525;
+        text-decoration: none;
+      }
+      
+      .connect-button-header {
+        border-radius: 0.5rem;
+        border: 1px solid var(--colors-gray-gray-200, #c6c6c6);
+        background: var(--colors-gray-bright-white, #fff);
+        display: flex;
+        padding: 0.9375rem 1.25rem;
+        justify-content: center;
+        align-items: center;
+        gap: 0.3rem;
+      }
+      
+      @media screen and (max-width: 599px) {
+        .dashboard-nav {
+          margin: 0 !important;
+          padding: 10px !important;
+        }
+        .connect-button-header {
+          display: none !important;
+        }
+        .pointer-cursor {
+            cursor: pointer;
+        }
+        .hide-content {
+            display: none;
+        }
+        .manage-profile-button {
+            padding-bottom: 16px;
+            border-bottom: 1px solid #E3E4E4;
+            margin-bottom: 16px;
+        }
+        .manage-profile-button a {
+            color: #252525;
+            text-decoration: none;
+        }
+        .smartphone-container {
+            padding: 0 !important;
+            flex-wrap: initial !important;
+            align-items: flex-start !important;
+        }
+        .smartphone-flex {
+            flex-direction: column-reverse;
+            align-items: end;
+        }
+      }
+    </style>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+    <script>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      
+      gtag('config', '')
+    </script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg mb-4 fixed-top dashboard-nav bg-white mx-0">
+      <div class="container-fluid smartphone-container" style="padding: 0">
+        <a href="/">
+          <svg width="148" height="18" viewBox="0 0 148 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.9815 5.41112C12.383 5.03905 11.744 4.7236 11.0646 4.46478C10.4014 4.18977 9.75435 3.97947 9.12347 3.83388C8.50877 3.67212 7.96686 3.59123 7.49775 3.59123C6.96393 3.59123 6.53525 3.69638 6.21173 3.90668C5.8882 4.1008 5.72644 4.40816 5.72644 4.82875C5.72644 5.24935 5.88011 5.59715 6.18746 5.87215C6.51099 6.13098 6.93966 6.34937 7.47348 6.52731C8.0073 6.70525 8.59774 6.8832 9.2448 7.06114C9.89185 7.23908 10.5308 7.44938 11.1617 7.69203C11.7926 7.93468 12.3749 8.25013 12.9087 8.63837C13.4426 9.01044 13.8712 9.49574 14.1948 10.0943C14.5183 10.6928 14.6801 11.4369 14.6801 12.3267C14.6801 13.4752 14.3727 14.4458 13.758 15.2385C13.1433 16.015 12.3183 16.6054 11.283 17.0098C10.2477 17.3981 9.09921 17.5922 7.83745 17.5922C6.88305 17.5922 5.92864 17.487 4.97423 17.2767C4.03601 17.0503 3.13822 16.7348 2.28087 16.3304C1.4397 15.9098 0.679408 15.4164 0 14.8502L1.72278 11.4289C2.30513 11.9465 2.96028 12.3995 3.68821 12.7877C4.41615 13.1759 5.15217 13.4833 5.89629 13.7098C6.6404 13.9201 7.30363 14.0252 7.88598 14.0252C8.54921 14.0252 9.06686 13.9039 9.43891 13.6612C9.82715 13.4024 10.0213 13.0304 10.0213 12.5451C10.0213 12.1245 9.8595 11.7847 9.53597 11.5259C9.21244 11.2509 8.78377 11.0244 8.24995 10.8465C7.71613 10.6685 7.12569 10.4987 6.47864 10.3369C5.84776 10.159 5.20879 9.95677 4.56174 9.7303C3.93086 9.48765 3.34851 9.18838 2.81469 8.83249C2.28087 8.46043 1.85219 7.98321 1.52867 7.40085C1.22132 6.81849 1.06764 6.09054 1.06764 5.21699C1.06764 4.16551 1.34264 3.25152 1.89264 2.47504C2.45881 1.68238 3.25145 1.07575 4.27056 0.655158C5.30585 0.218386 6.5029 0 7.86172 0C9.1073 0 10.3286 0.177944 11.5257 0.533832C12.7227 0.88972 13.7661 1.35076 14.6558 1.91694L12.9815 5.41112Z" fill="#252525" />
+            <path d="M16.9484 0.339711H21.7771L26.7028 10.3612L31.6042 0.339711H36.4329V17.3495H32.502L32.4777 6.45451L28.1344 15.651H25.2712L20.9035 6.45451V17.3495H16.9484V0.339711Z" fill="#252525" />
+            <path d="M47.8239 0.339711C49.118 0.339711 50.2342 0.517655 51.1724 0.873543C52.1107 1.22943 52.8386 1.72282 53.3562 2.35371C53.8739 2.98461 54.1327 3.74491 54.1327 4.63463C54.1327 5.52435 53.8658 6.30083 53.332 6.96408C52.8143 7.62733 52.1107 8.08027 51.221 8.32293C52.2886 8.53322 53.1298 9.02661 53.7445 9.8031C54.3754 10.5796 54.6908 11.5178 54.6908 12.6178C54.6908 13.5884 54.4239 14.4296 53.8901 15.1414C53.3562 15.8532 52.596 16.4032 51.6092 16.7914C50.6386 17.1635 49.482 17.3495 48.1394 17.3495H39.7438V0.339711H47.8239ZM47.5813 7.10967C48.196 7.10967 48.6813 6.96408 49.0372 6.6729C49.393 6.36554 49.571 5.94495 49.571 5.41112C49.571 4.87728 49.393 4.46478 49.0372 4.17359C48.6813 3.88241 48.196 3.74491 47.5813 3.76109H44.1842V7.10967H47.5813ZM47.5813 13.9524C48.3577 13.9524 48.9725 13.7907 49.4254 13.4671C49.8783 13.1274 50.1048 12.6664 50.1048 12.084C50.1048 11.534 49.8783 11.0972 49.4254 10.7737C48.9725 10.4502 48.3577 10.2965 47.5813 10.3127H44.1842V13.9524H47.5813Z" fill="#252525" />
+            <path d="M67.4126 3.70156C66.7505 3.29575 66.0137 2.97538 65.2021 2.74044C64.3905 2.5055 63.6003 2.38803 62.8314 2.38803C61.8916 2.38803 61.1014 2.58025 60.4606 2.9647C59.8199 3.32779 59.4995 3.92583 59.4995 4.7588C59.4995 5.39955 59.7238 5.91215 60.1723 6.2966C60.6422 6.65969 61.2295 6.96939 61.9343 7.22569C62.6605 7.46063 63.4187 7.69557 64.2089 7.93051C64.9992 8.16545 65.7574 8.46447 66.4836 8.82756C67.2097 9.1693 67.7971 9.64986 68.2456 10.2693C68.6941 10.8886 68.9184 11.7003 68.9184 12.7041C68.9184 13.7934 68.6194 14.6904 68.0213 15.3952C67.4447 16.0787 66.6865 16.5913 65.7467 16.933C64.8283 17.2534 63.8245 17.4136 62.7353 17.4136C61.5392 17.4136 60.3645 17.2107 59.2112 16.8049C58.0579 16.3991 57.0754 15.8224 56.2638 15.0749L57.2249 13.3769C57.9511 14.039 58.8161 14.5623 59.8199 14.9467C60.8451 15.3098 61.8489 15.4914 62.8314 15.4914C63.4935 15.4914 64.0915 15.4059 64.6254 15.2351C65.1807 15.0428 65.6186 14.7652 65.9389 14.4021C66.2807 14.0176 66.4515 13.5371 66.4515 12.9604C66.4729 12.2556 66.2593 11.7109 65.8108 11.3265C65.3836 10.9207 64.807 10.5896 64.0808 10.3333C63.376 10.077 62.6178 9.8314 61.8062 9.59646C61.016 9.36152 60.2577 9.07318 59.5316 8.73145C58.8268 8.36836 58.2501 7.89848 57.8016 7.3218C57.3531 6.72377 57.1288 5.92283 57.1288 4.91899C57.1288 3.87243 57.4065 3.0181 57.9618 2.35599C58.5171 1.69388 59.2326 1.20264 60.1082 0.882265C61.0053 0.561889 61.9664 0.4017 62.9916 0.4017C63.9954 0.4017 64.9672 0.54053 65.9069 0.818189C66.8466 1.07449 67.6689 1.43758 68.3737 1.90746L67.4126 3.70156Z" fill="#252525" />
+            <path d="M84.7806 4.53454C84.1612 3.91515 83.4244 3.43458 82.57 3.09285C81.7371 2.72976 80.808 2.54821 79.7828 2.54821C78.6295 2.54821 77.5937 2.81519 76.6753 3.34915C75.7782 3.88311 75.0734 4.63065 74.5608 5.59178C74.0483 6.5529 73.792 7.66353 73.792 8.92368C73.792 10.1838 74.0483 11.3051 74.5608 12.2876C75.0734 13.2487 75.7782 14.007 76.6753 14.5623C77.5937 15.0962 78.6295 15.3632 79.7828 15.3632C80.8721 15.3632 81.8652 15.1817 82.7623 14.8186C83.6593 14.4341 84.4175 13.8788 85.0369 13.1526L86.4465 14.5623C85.699 15.4593 84.7485 16.1642 83.5952 16.6768C82.4419 17.168 81.1391 17.4136 79.6867 17.4136C78.0635 17.4136 76.6219 17.0612 75.3618 16.3564C74.1016 15.6302 73.1085 14.6263 72.3823 13.3448C71.6775 12.0633 71.3251 10.5896 71.3251 8.92368C71.3251 7.25773 71.6775 5.79468 72.3823 4.53454C73.1085 3.25304 74.1016 2.2492 75.3618 1.52301C76.6219 0.796831 78.0635 0.433739 79.6867 0.433739C81.0536 0.433739 82.2817 0.658001 83.371 1.10653C84.4816 1.53369 85.4213 2.13172 86.1902 2.90062L84.7806 4.53454Z" fill="#252525" />
+            <path d="M97.0236 0.433739C98.6896 0.433739 100.163 0.796831 101.445 1.52301C102.748 2.22784 103.762 3.221 104.488 4.5025C105.214 5.784 105.577 7.25773 105.577 8.92368C105.577 10.5896 105.214 12.0633 104.488 13.3448C103.762 14.6263 102.748 15.6302 101.445 16.3564C100.163 17.0612 98.6896 17.4136 97.0236 17.4136C95.3577 17.4136 93.8734 17.0612 92.5705 16.3564C91.2891 15.6302 90.2852 14.6263 89.5591 13.3448C88.8329 12.0633 88.4698 10.5896 88.4698 8.92368C88.4698 7.25773 88.8329 5.784 89.5591 4.5025C90.2852 3.221 91.2891 2.22784 92.5705 1.52301C93.8734 0.796831 95.3577 0.433739 97.0236 0.433739ZM97.0236 2.51618C95.849 2.51618 94.8024 2.79383 93.884 3.34915C92.9656 3.88311 92.2502 4.63065 91.7376 5.59178C91.225 6.5529 90.9687 7.66353 90.9687 8.92368C90.9687 10.2052 91.225 11.3372 91.7376 12.3196C92.2502 13.2808 92.9656 14.039 93.884 14.5943C94.8024 15.1283 95.849 15.3952 97.0236 15.3952C98.2197 15.3952 99.2662 15.1283 100.163 14.5943C101.082 14.039 101.797 13.2808 102.31 12.3196C102.822 11.3372 103.079 10.2052 103.079 8.92368C103.079 7.66353 102.822 6.5529 102.31 5.59178C101.797 4.63065 101.082 3.88311 100.163 3.34915C99.2662 2.79383 98.2197 2.51618 97.0236 2.51618Z" fill="#252525" />
+            <path d="M118.526 2.7084C117.265 2.68704 116.176 2.95402 115.258 3.50934C114.361 4.0433 113.667 4.80152 113.175 5.784C112.684 6.74513 112.439 7.87712 112.439 9.17998L111.574 9.08386C111.574 7.24705 111.851 5.68789 112.407 4.40639C112.962 3.12489 113.763 2.1424 114.809 1.45894C115.856 0.775472 117.095 0.433739 118.526 0.433739V2.7084ZM109.972 0.497813H112.471V17.3495H109.972V0.497813Z" fill="#252525" />
+            <path d="M134.194 7.93051C134.151 6.79852 133.884 5.82672 133.393 5.0151C132.923 4.18213 132.272 3.54138 131.439 3.09285C130.627 2.64433 129.666 2.42006 128.555 2.42006C127.381 2.42006 126.345 2.68704 125.448 3.221C124.572 3.75496 123.878 4.5025 123.365 5.46363C122.853 6.42475 122.597 7.54606 122.597 8.82756C122.597 10.1518 122.853 11.3158 123.365 12.3196C123.899 13.3021 124.636 14.071 125.576 14.6263C126.516 15.1817 127.584 15.4593 128.78 15.4593C130.915 15.4593 132.656 14.7331 134.002 13.2808L135.379 14.6584C134.568 15.5341 133.585 16.2175 132.432 16.7088C131.278 17.1787 130.008 17.4136 128.619 17.4136C126.954 17.4136 125.48 17.0612 124.198 16.3564C122.938 15.6302 121.956 14.6263 121.251 13.3448C120.546 12.0633 120.194 10.5896 120.194 8.92368C120.194 7.25773 120.546 5.79468 121.251 4.53454C121.956 3.25304 122.938 2.25988 124.198 1.55505C125.48 0.828868 126.932 0.455097 128.555 0.433739C130.371 0.433739 131.877 0.828868 133.073 1.61913C134.269 2.38803 135.144 3.4773 135.7 4.88695C136.276 6.27524 136.511 7.90915 136.404 9.78869H122.148V7.93051H134.194Z" fill="#252525" />
+            <path d="M144.876 4.39298L143.164 0.52832H143.857L145.055 3.36381L146.252 0.52832H146.945L145.233 4.39298H144.876ZM143.038 4.39298V0.52832H143.71V4.39298H143.038ZM146.399 4.39298V0.52832H147.071V4.39298H146.399ZM140.518 4.39298V0.864378H141.19V4.39298H140.518ZM139.342 1.11642V0.52832H142.366V1.11642H139.342Z" fill="#252525" />
+          </svg>
+        </a>
+        <div class="d-flex smartphone-flex">
+          
+
+          
+              <!-- This block can be overridden in child templates -->
+          
+
+          <div class="dropdown-button" id="dropdownMenuButton1" data-bs-toggle="dropdown" style="cursor: pointer;">
+            <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g id="Group 72">
+                <circle id="Ellipse 43" cx="25" cy="25" r="25" fill="#D9D9D9" />
+                <path id="Vector" d="M35.9278 34.5726C34.9739 30.4368 31.8281 27.3149 27.8591 26.2898C30.5659 25.1718 32.4746 22.5179 32.4746 19.4285C32.4746 15.3327 29.1213 12 25.0001 12C20.879 12 17.5257 15.3327 17.5257 19.4285C17.5257 22.5179 19.4345 25.1718 22.1411 26.2898C18.1722 27.3149 15.0254 30.4368 14.0724 34.5726C13.8791 35.412 14.077 36.2792 14.6161 36.9516C15.1507 37.6184 15.9483 38 16.8053 38H33.1946C34.0514 38 34.8493 37.6174 35.3838 36.9516C35.9229 36.2792 36.121 35.4131 35.9275 34.5726H35.9278ZM19.3933 19.4285C19.3933 16.356 21.9076 13.8571 24.9991 13.8571C28.0906 13.8571 30.6049 16.356 30.6049 19.4285C30.6049 22.501 28.0906 24.9999 24.9991 24.9999C21.9076 24.9999 19.3933 22.501 19.3933 19.4285ZM33.9225 35.7935C33.8178 35.9245 33.5843 36.1426 33.1947 36.1426H16.8032C16.4136 36.1426 16.1801 35.9243 16.0754 35.7935C15.8931 35.5659 15.8259 35.2727 15.8923 34.9875C16.8705 30.7476 20.6151 27.7855 24.9999 27.7855C29.3846 27.7855 33.1294 30.7468 34.1075 34.9864C34.173 35.2724 34.1066 35.5659 33.9244 35.7933L33.9225 35.7935Z" fill="#252525" />
+              </g>
+            </svg>
+          </div>
+          <ul class="dropdown-menu dropdown-menu-end p-3 border border-0 shadow mb-5 bg-body-tertiary rounded mt-2" aria-labelledby="dropdownMenuButton1" style="margin-right: 33px">
+            <li id="manage-profile" class="fw-semibold fs-6 pointer-cursor manage-profile-button" onclick="manageProfile()">Manage profile</li>
+            <li class="fw-semibold fs-6 pointer-cursor">
+                <a href="/auth/logout/" class="text-decoration-none" style="color: initial">
+                    Log out
+                </a>
+            </li>
+          </ul>
+        </div>
+        <ul class="dropdown-menu dropdown-menu-end p-3 border border-0 shadow mb-5 bg-body-tertiary rounded mt-2" aria-labelledby="dropdownMenuButton1" style="margin-right: 33px">
+          <li id="manage-profile" class="fw-semibold fs-6 pointer-cursor manage-profile-button">
+            <a href="/dashboard/profile/">Manage profile</a>
+          </li>
+          <li class="fw-semibold fs-6 pointer-cursor">
+            <a href="/auth/logout/">
+                Log out
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <main id="content">
+      
+
+<head>
+    <link rel="stylesheet" href="https://ch-smbportal-marketplace-prod-036932317584-us-east-1.s3.amazonaws.com/static/home.css">
+</head>
+
+<div class="container m-5 red" style="padding: 0 15%; margin: 0 auto !important;">
+    <a href="/dashboard/" class="back-to-dashboard"><span>&#8592;<span> Back to Dashboard</a>
+    <!-- Railz widget -->
+    
+        <div class="mt-5"id="railz-connect"></div>
+    
+
+</div>
+<!-- Start of Railz Connect script -->
+<script src="https://cdn.jsdelivr.net/npm/@railzai/railz-connect@latest/dist/railz-connect.js"></script>
+<script>
+
+    const widget = new RailzConnect();
+    widget.mount({
+        parentElement: document.getElementById('railz-connect'),
+        widgetId: "wid_prod_1bb20206-763c-486c-8944-60800c0e1e7d",
+        businessName: "01HBV2DJBRBR69NTT6YS8H8202",
+        redirectUrl:"https://app.mysmbscore.com/dashboard",
+        theme:{
+            components:{
+                search:false    }
+        },
+      options:{
+        kinds:{
+        },
+        components:{
+          search:false,
+          watermark:false,
+          overview:false,
+        },
+        content:{
+          step:{summary:{
+            title:"Accounting services connected!",
+            subTitle:"You have successfully connected to the Service below and data will be fetched. Your MySMBScore services will be enabled shortly on the SMBScore dashboard."}}
+        }
+      },
+
+
+
+        onSuccess: (event, data) => {
+            console.log("Railz event",event)
+            if (event === "authorization") {
+                window.location.href =  "/dashboard/"
+            }
+          },
+    });
+</script>
+<!-- End of Railz Connect script -->
+
+    </main>
+    
+    
+
+<style>
+  footer {
+    color: white;
+    background-color: #252525;
+  }
+  .copyright {
+    color: white;
+    background-color: #252525;
+    margin:0 !important;
+  }
+  footer img {
+    width: 181.362px;
+    height: 23.3856px;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    object-fit: cover;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+  .vectors-wrapper {
+    width: 24px;
+    height: 24px;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    object-fit: cover;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+  /* row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 */
+</style>
+<div class="container-fluid">
+  <footer class="row py-5 my-5 px-5 mb-0">
+    <div class="col col-12 col-sm-12 col-md-12 col-lg-6 mb-5 text-center">
+      <div class="row">
+        <div class="col d-flex flex-column align-items-center align-items-sm-center align-items-md-start align-items-lg-start">
+          <a href="/">
+            <img src="https://assets.website-files.com/639dfb133eccf9f5cb327618/63ebde74a789e7ff8b23c59f_Vectors-Wrapper.svg" alt="">
+          </a>
+          <div class="row w-25 justify-content-center justify-content-sm-center justify-content-md-start p-0 mt-2">
+            <a href="https://www.linkedin.com/company/mysmbscore/" class="col-6 col-lg-3" >
+              <img src="https://assets.website-files.com/639dfb133eccf9f5cb327618/63ebde75bc4908fd100be7b0_Vectors-Wrapper.svg" loading="lazy" alt="" class="vectors-wrapper">
+            </a>
+            <a href="mailto:info@charmsolutions.ai?subject=Requesting%20More%20Info" class="col-6 col-lg-3">
+              <img src="https://assets.website-files.com/639dfb133eccf9f5cb327618/63ebde76f32a98387af53731_Vectors-Wrapper.svg" loading="lazy" alt="" class="vectors-wrapper">
+            </a>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+    <div class="col col-12 col-sm-12 col-md-12 col-lg-6 mb-4 d-flex flex-column align-items-center align-items-md-start">
+      <h5>Quick Links</h5>
+      <ul class="nav flex-column">
+        <li class="nav-item mb-2">
+          <a href="https://www.mysmbscore.com/articles " class="nav-link p-0 text-white">Articles</a>
+        </li>
+        <li class="nav-item mb-2">
+          <a href="https://www.mysmbscore.com/terms-of-use" class="nav-link p-0 text-white">Terms of use</a>
+        </li>
+        <li class="nav-item mb-2">
+          <a href="https://www.mysmbscore.com/privacy-policy" class="nav-link p-0 text-white">Privacy Policy</a>
+        </li>
+        <li class="nav-item mb-2">
+          <a href="https://www.mysmbscore.com/contact-us " class="nav-link p-0 text-white">Contact Us</a>
+        </li>
+      </ul>
+    </div>
+  
+   
+    
+</div>
+<p class="text-center text-body-secondary copyright">Copyright &copy; 2023 SMBscore</p>
+
+
+
+<div class="b-example-divider"></div>
+
+    
+    <script>
+      window.addEventListener('scroll', (event) => {
+          let doc = document.documentElement
+          let top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0)
+        
+          let header = document.getElementsByTagName('nav')[0]
+          if (top > 15) {
+            header.classList.add('border-bottom')
+          } else {
+            header.classList.remove('border-bottom')
+          }
+        })
+        
+        $(function() {
+            $('[data-bs-toggle="tooltip"]').tooltip();
+            var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+            var toastList = toastElList.map(function (toastEl) {
+              return new bootstrap.Toast(toastEl, option)
+            })
+        })
+
+        window.onload = function () {
+            if (window.location.href.includes('profile')) {
+                document.getElementById('manage-profile').classList.add('hide-content');
+            }
+        }
+        function manageProfile() {
+            window.location.href =  "/dashboard/profile/"
+        }
+        function manageConnections() {
+            window.location.href =  "/dashboard/connect/"
+        }
+
+        var entityId = '01HBV2DJBRBR69NTT6YS8H8202';
+        let node = document.createElement('script'); // creates the script tag
+        node.src = 'https:///js/lendflow-loader.js';
+        node.type = 'text/javascript';
+        //    node.async = true; // makes script run asynchronously
+
+        node.setAttribute("data-customer-token", entityId);
+        document.getElementsByTagName('head')[0].appendChild(node);
+    </script>
+  </body>
+</html>
