@@ -12,3 +12,10 @@ To update any widget parameter, follow these steps:
 6. At the top input field enter commit message (not really relevant for this repository, it can be simple `update` text)
 7. Click the **Commit & push** button. 
 8. The deployment will start automatically after this, it runs for about a minute. The deployment progress can be tracked on the [deployments](https://github.com/carm-ai/charm-widget-testsite/deployments) page.
+9. Refresh the [page](https://github.com/carm-ai/charm-widget-testsite) after deployment to verify the changes.
+
+
+    **Important:** 
+- Always push on `master` branch
+- We rarely need to change other stuffs from the html file, most of the time they remain the same
+- At the bottom of the file there is a `<script>` tag that refers to the environment for the bundle file. Check if this corresponds to the environment you are testing, and update it if needed. The widget bundle file location can be seen in Buddy; on the `charm-widgets` project, choose the correct environment and under **Variables** search for `ASSETS_URL` variable.
